@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常的坐标 · 开云</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f3ed;
+            font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+            color: #3a3530;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .page {
+            background-color: #fcf9f4;
+            padding: 2.4rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #4f4942;
+            margin-bottom: 0.3rem;
+            border-left: 5px solid #b99e86;
+            padding-left: 1rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #8a7f74;
+            margin-bottom: 2.2rem;
+            font-style: italic;
+            padding-left: 1.5rem;
+            border-bottom: 1px solid #e3dad1;
+            padding-bottom: 0.6rem;
+        }
+
+        .opening {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            background-color: #f4efe9;
+            padding: 1.6rem 2rem;
+            border-radius: 30px 8px 30px 8px;
+            margin-bottom: 2rem;
+            color: #4c433c;
+            quotes: "“" "”" "‘" "’";
+        }
+
+        .opening::before {
+            content: "“";
+            font-size: 2.8rem;
+            color: #b99e86;
+            line-height: 0;
+            vertical-align: -0.6rem;
+            margin-right: 6px;
+        }
+
+        .opening::after {
+            content: "”";
+            font-size: 2.8rem;
+            color: #b99e86;
+            line-height: 0;
+            vertical-align: -0.4rem;
+            margin-left: 6px;
+        }
+
+        .intro-text {
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.4rem;
+            text-indent: 2em;
+        }
+
+        .highlight-box {
+            background: #ede7df;
+            padding: 1.8rem 2rem;
+            border-radius: 20px 4px 20px 4px;
+            margin: 2rem 0;
+            border-left: 6px solid #b99e86;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.6rem;
+            text-indent: 0;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: #f4efe9;
+            border-radius: 40px 8px 8px 40px;
+            transition: background 0.2s ease;
+        }
+
+        .feature-item:hover {
+            background: #e9dfd5;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            min-width: 36px;
+            color: #b99e86;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+        }
+
+        .feature-text strong {
+            color: #6b5d52;
+            font-weight: 600;
+        }
+
+        .ref-block {
+            background: #fff9f2;
+            border: 1px solid #ddcfc2;
+            padding: 1.4rem 1.8rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .ref-block .ref-title {
+            font-weight: 600;
+            color: #7b6b5d;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ref-block .ref-title::before {
+            content: "📎";
+            font-size: 1.1rem;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 1.2rem;
+            border-top: 1px dashed #d6cbc1;
+            padding-top: 1.6rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #5c5147;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .faq-q::before {
+            content: "Q：";
+            color: #b99e86;
+        }
+
+        .faq-a {
+            padding-left: 1.8rem;
+            color: #5f554b;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #6b5d52;
+            text-decoration: underline;
+            text-decoration-color: #cbb9a9;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .faq-a a:hover {
+            color: #a2846b;
+            text-decoration-color: #a2846b;
+        }
+
+        .closing {
+            margin-top: 2.5rem;
+            padding: 1.2rem 0 0.4rem;
+            border-top: 1px solid #e3dad1;
+            font-size: 0.98rem;
+            color: #6b5f54;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .closing a {
+            color: #6b5d52;
+            text-decoration: none;
+            border-bottom: 1px dotted #b99e86;
+            padding-bottom: 1px;
+        }
+
+        .closing a:hover {
+            border-bottom: 1px solid #8a7a6b;
+        }
+
+        @media (max-width: 540px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+
+            .page {
+                padding: 1.6rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+                padding-left: 0.8rem;
+            }
+
+            .subhead {
+                font-size: 0.9rem;
+                padding-left: 1rem;
+            }
+
+            .opening {
+                font-size: 1.1rem;
+                padding: 1.2rem 1.2rem;
+            }
+
+            .feature-item {
+                flex-wrap: wrap;
+                border-radius: 16px;
+                padding: 0.8rem 1rem;
+            }
+
+            .highlight-box {
+                padding: 1.2rem 1rem;
+            }
+
+            .ref-block {
+                padding: 1rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>日常的坐标</h1>
+    <div class="subhead">从一次查询开始，延伸阅读的边界</div>
+
+    <div class="opening">
+        有时你只是想知道一个名字背后是什么。
+    </div>
+
+    <div class="intro-text">
+        <p>在信息流快速划过的时代，许多名词像浮标一样从眼前漂过。我们随手搜索、匆匆扫读，然后关闭标签页。但总有一些名字，值得你停下来，慢慢展开它的层次——比如「开云」。</p>
+        <p>它不是一个需要推销的概念，而是一个可以反复回到的参照点。当你翻阅行业动态、研究品牌脉络，或者仅仅是在某个午后想了解一点商业文化时，这个名字就在那里，安静地提供着结构清晰的信息。</p>
+    </div>
+
+    <div class="highlight-box">
+        <p>📌 与其说这是一个「官网」，不如说是一张可供随时翻查的参考底图。它不喧哗，只陈列事实与线索。</p>
+    </div>
+
+    <div class="feature-list">
+        <div class="feature-item">
+            <span class="feature-icon">📍</span>
+            <div class="feature-text"><strong>查询起点</strong> —— 从零散的印象到系统的认知，一个简洁的入口就能省去反复检索的周折。</div>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">📂</span>
+            <div class="feature-text"><strong>对照依据</strong> —— 当你需要比对信息、核实来源，一个稳定的参考页能让你的阅读更有底气。</div>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">🔗</span>
+            <div class="feature-text"><strong>延伸索引</strong> —— 不止于一个名称，更串联起相关的背景、动态与解读，让每一次阅读都不止于表面。</div>
+        </div>
+    </div>
+
+    <div class="ref-block">
+        <div class="ref-title">使用场景一瞥</div>
+        <p>写行业笔记时，需要确认一个品牌的归属脉络；和朋友聊天时，想快速了解某个集团的结构；逛书店翻到商业史，想随手查证一个年份——这些时候，你需要的不是华丽的宣传页，而是一个干净、可依赖的参照坐标。<a href="https://m-web-kering.com" style="text-decoration: underline; text-underline-offset: 3px; color: #6b5d52;">开云</a>的页面就是为此准备的。</p>
+    </div>
+
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="faq-q">「开云」这个名字有什么特别的吗？</div>
+            <div class="faq-a">它承载着一组品牌与产业的故事，但更直接的答案是：你可以在 <a href="https://m-web-kering.com">开云</a> 的页面上找到它自己的叙述。那里有比二手转述更准确的轮廓。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">我应该从哪里开始看？</div>
+            <div class="faq-a">没有固定的顺序。你可以从最新的动态切入，也可以从基础介绍读起。<a href="https://m-web-kering.com">开云</a> 的页面结构很清晰，适合按自己的节奏翻阅。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">这个页面和别的参考来源有什么不同？</div>
+            <div class="faq-a">它的重心在于「整合与呈现」——不堆砌术语，不制造焦虑，只是把该有的信息放在该在的位置。当你需要的时候，它就在那里。</div>
+        </div>
+    </div>
+
+    <div class="closing">
+        — 一次温和的收藏，胜过十次匆忙的搜索。<br>
+        不妨把 <a href="https://m-web-kering.com">开云</a> 加入书签，下次想查询时，它已经为你准备好了。
+    </div>
+
+</div>
+</body>
+</html>
